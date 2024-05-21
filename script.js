@@ -53,7 +53,7 @@ function getIndex(target) {
 }
 
 function handleClick(event) {
-    const target = event.target;
+    const {target} = event;
     const index = getIndex(target);
 
     if (selected !== null) {
@@ -92,8 +92,9 @@ function handleClick(event) {
 function createCellDiv(x, y) {
     let cell_div = document.createElement('div');
     cell_div.classList.add('cell');
-    if ((x + y) % 2 === 0)
+    if ((x + y) % 2 === 0) {
         return cell_div;
+    }
     
     let index = board.posToIndex(x, y);
     cell_div.id = `cell-${index}`;
