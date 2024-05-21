@@ -31,10 +31,10 @@ socket.on('receive-move', (newBoardArray, currentTurn, takeIndex) => {
 });
 
 socket.on('join-success', player => {
-    board.turn = player;
     board = new dammen.Dammen();
+    board.turn = player;
     createBoard(player);
-    console.log("Joined successfully!");
+    console.log(`Joined successfully as ${player}!`);
 });
 
 socket.on('opponent-disconnect', () => {
