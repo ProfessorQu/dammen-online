@@ -1,0 +1,29 @@
+{
+  "name": "dammen-online",
+  "version": "1.0.0",
+  "description": "online dammen",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx browserify script.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorQu/Dammen-Online.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProfessorQu/Dammen-Online/issues"
+  },
+  "homepage": "https://github.com/ProfessorQu/Dammen-Online#readme",
+  "dependencies": {
+    "dammen": "^1.2.3",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "nodemon": "^3.1.0"
+  },
+  "keywords": [],
+  "type": "module"
+}

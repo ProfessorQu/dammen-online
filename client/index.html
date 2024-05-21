@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Dammen</title>
+
+        <script defer src="http://localhost:9999/socket.io/socket.io.js"></script>
+        <script defer src="bundle.js"></script>
+
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <div id="board"></div>
+        <div id="winner"></div>
+        <div id="options">
+            <input type="submit" id="draw" value="Offer Draw">
+            <br />
+            <input type="submit" id="resign" value="Resign">
+        </div>
+        <br />
+        <form id="join-game">
+            <input type="text" id="game-id" placeholder="Code...">
+            <input type="submit" value="Join">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+:root {
+    --size: 5vh;
+}
+
+body {
+    font-size: medium;
+    background-color: aquamarine;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(10, var(--size));
+    float: left;
+    padding-right: 1em;
+}
+
+.cell {
+    width: var(--size);
+    height: var(--size);
+}
+
+img {
+    width: var(--size);
+    height: var(--size);
+}
+
+.cell[id] {
+    background-color: gray;
+}
+
+.selected {
+    background-color: steelblue !important;
+}
+
+.possible {
+    background-color: cadetblue !important;
+}
+
+.cell img {
+    pointer-events: none;
+}
+
+.cell:not([id]) {
+    background-color: whitesmoke;
+}
+
+input {
+    width: 7em;
+    font-size: medium;
+    border: 1px solid gray;
+    margin: 5px;
+}
