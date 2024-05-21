@@ -396,7 +396,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./dammen"), exports);
 
 },{"./dammen":1}],3:[function(require,module,exports){
-const socket = io('http://localhost:3000');
+const socket = io('https://damdam.glaasjemelk.com');
 const board_div = document.getElementById('board');
 
 const winnerDiv = document.getElementById('winner');
@@ -430,6 +430,7 @@ socket.on('receive-move', (newBoardArray, currentTurn, takeIndex) => {
 
 socket.on('join-success', player => {
     board.turn = player;
+    board = new dammen.Dammen();
     createBoard(player);
     console.log("Joined successfully!");
 });
@@ -551,13 +552,11 @@ form.addEventListener('submit', event => {
 resignButton.addEventListener('click', event => {
     event.preventDefault();
     socket.emit('resign');
-    console.log("Resigned");
 });
 
 offerDrawButton.addEventListener('click', event => {
     event.preventDefault();
     socket.emit('draw');
-    console.log("Offered draw");
 });
 
 },{"dammen":2}]},{},[3]);
