@@ -1,4 +1,4 @@
-const socket = io('http://localhost:9999');
+const socket = io('https://damdam.glaasjemelk.com');
 const board_div = document.getElementById('board');
 
 const winnerDiv = document.getElementById('winner');
