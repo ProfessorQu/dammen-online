@@ -1,6 +1,6 @@
 const starColors = ['yellow', 'cyan', 'red'];
-const maxAcceleration = 5;
-const maxSpeed = 3;
+const maxAcceleration = 3;
+const maxSpeed = 2;
 
 let starSpeeds = [];
 
@@ -10,18 +10,6 @@ let repel = false;
 
 function mouseMoved(x, y) {
     mousePos = [x, y];
-
-    // const glow = document.createElement('div');
-    // glow.classList.add('glow');
-
-    // glow.style.left = x + 'px';
-    // glow.style.top = y + 'px';
-
-    // document.body.appendChild(glow);
-
-    // setTimeout(() => {
-    //     document.body.removeChild(glow);
-    // }, 500);
 }
 
 function createStars() {
@@ -81,23 +69,17 @@ setInterval(() => {
         let x = Number(star.style.left.slice(0, -2));
         let y = Number(star.style.top.slice(0, -2));
         x += starSpeeds[index][0];
-        // x += mousePos[0] - x;
         y += starSpeeds[index][1];
-        // y += mousePos[1] - y;
 
         if (x < -10) {
-            // x = window.innerWidth + 10;
             starSpeeds[index][0] *= -1;
         } else if (x > window.innerWidth + 10) {
-            // x = -10;
             starSpeeds[index][0] *= -1;
         }
 
         if (y < -10) {
-            // y = window.innerHeight + 10;
             starSpeeds[index][1] *= -1;
         } else if (y > window.innerHeight + 10) {
-            // y = -10;
             starSpeeds[index][1] *= -1;
         }
 
