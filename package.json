@@ -4,7 +4,7 @@
   "description": "online dammen",
   "main": "index.js",
   "scripts": {
-    "build": "npx browserify script.js -o bundle.js"
+    "build": "npx browserify app.js -o bundle.js"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 const socket = io('https://damdam.glaasjemelk.com');
-const board_div = document.getElementById('board');
 
+const boardDiv = document.getElementById('board');
 const winnerDiv = document.getElementById('winner');
 
 const form = document.getElementById('join-game');
@@ -39,7 +39,7 @@ socket.on('join-success', player => {
 
 socket.on('opponent-disconnect', () => {
     alert("Opponent disconnected");
-    board_div.innerHTML = "";
+    boardDiv.innerHTML = "";
 });
 
 socket.on('game-over', winner => {
@@ -105,7 +105,7 @@ function createCellDiv(x, y) {
         return cell_div;
     }
 
-    let color = piece.player === dammen.Player.White ? "white" : "black";
+    let color = piece.player === dammen.Player.White ? "red" : "black";
     let type = piece.pieceType === dammen.PieceType.Normal ? "normal" : "dam";
 
     cell_div.innerHTML = `<img src="images/${color}_${type}.png">`;
@@ -114,19 +114,19 @@ function createCellDiv(x, y) {
 }
 
 function createBoard(player) {
-    board_div.innerHTML = "";
+    boardDiv.innerHTML = "";
     winnerDiv.innerHTML = "The result is: "
 
     if (player === dammen.Player.White) {
         for (let y = 0; y < 10; y++) {
             for (let x = 0; x < 10; x++) {
-                board_div.appendChild(createCellDiv(x, y));
+                boardDiv.appendChild(createCellDiv(x, y));
             }
         }
     } else {
         for (let y = 9; y >= 0; y--) {
             for (let x = 9; x >= 0; x--) {
-                board_div.appendChild(createCellDiv(x, y));
+                boardDiv.appendChild(createCellDiv(x, y));
             }
         }
     }
@@ -140,7 +140,7 @@ function updateBoard() {
             continue;
         }
 
-        let color = piece.player === dammen.Player.White ? "white" : "black";
+        let color = piece.player === dammen.Player.White ? "red" : "black";
         let type = piece.pieceType === dammen.PieceType.Normal ? "normal" : "dam";
 
         document.getElementById('cell-' + index).innerHTML = `<img src="images/${color}_${type}.png">`;

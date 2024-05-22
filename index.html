@@ -7,21 +7,22 @@
 
         <script defer src="https://damdam.glaasjemelk.com/socket.io/socket.io.js"></script>
         <script defer src="bundle.js"></script>
+        <script defer src="style.js"></script>
 
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
-        <div id="board"></div>
-        <div id="winner"></div>
-        <div id="options">
-            <input type="submit" id="draw" value="Offer Draw">
-            <br />
-            <input type="submit" id="resign" value="Resign">
+        <div id="content">
+            <div id="board"></div>
+            <div id="winner"></div>
+            <div id="options">
+                <input type="submit" id="draw" value="Offer Draw">
+                <input type="submit" id="resign" value="Resign">
+            </div>
+            <form id="join-game">
+                <input type="text" id="game-id" placeholder="Code...">
+                <input type="submit" value="Join">
+            </form>
         </div>
-        <br />
-        <form id="join-game">
-            <input type="text" id="game-id" placeholder="Code...">
-            <input type="submit" value="Join">
-        </form>
     </body>
 </html>

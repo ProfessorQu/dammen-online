@@ -1,17 +1,41 @@
 :root {
-    --size: 5vh;
+    --size: 8vh;
+    --table-color: rgba(255, 255, 255, 0.7);
 }
 
 body {
-    font-size: medium;
-    background-color: aquamarine;
+    font-size: larger;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: black;
+}
+
+#content {
+    width: calc(10 * var(--size) + 11em + 2vh);
+    height: calc(10 * var(--size) + 20px);
+    margin: auto;
+    margin-top: 8vh;
+
+    padding: 1vh;
+
+    background-color: var(--table-color);
+    box-shadow: 0 0 3rem 2rem var(--table-color);
+    border-radius: 1%;
+
+    user-select: none;
 }
 
 #board {
     display: grid;
     grid-template-columns: repeat(10, var(--size));
+    width: calc(10 * var(--size));
     float: left;
-    padding-right: 1em;
+    margin-right: 2vh;
+}
+
+#board:has(div) {
+    border: 10px solid gray;
+    border-radius: 1%;
 }
 
 .cell {
@@ -22,6 +46,23 @@ body {
 img {
     width: var(--size);
     height: var(--size);
+}
+
+.glow {
+    position: absolute;
+    box-shadow: 0 0 3rem 1rem white;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: yellow;
+    border-radius: 100%;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .cell[id] {
@@ -45,8 +86,9 @@ img {
 }
 
 input {
-    width: 7em;
+    width: 5em;
     font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: 1px solid gray;
     margin: 5px;
 }
