@@ -6,7 +6,7 @@
 body {
     font-size: larger;
     color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
     background-color: black;
 }
 
@@ -48,13 +48,6 @@ img {
     height: var(--size);
 }
 
-.glow {
-    position: absolute;
-    box-shadow: 0 0 3rem 1rem white;
-    pointer-events: none;
-    z-index: -1;
-}
-
 .star {
     position: absolute;
     width: 5px;
@@ -75,6 +68,10 @@ img {
 
 .possible {
     background-color: cadetblue !important;
+}
+
+.changed {
+    background-color: darkcyan !important;
 }
 
 .cell img {

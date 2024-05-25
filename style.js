@@ -2,6 +2,7 @@ const starColors = ['yellow', 'cyan', 'red'];
 const maxAcceleration = 3;
 const maxSpeed = 2;
 
+let stars = [];
 let starSpeeds = [];
 
 let mousePos = [0, 0];
@@ -12,13 +13,16 @@ function mouseMoved(x, y) {
     mousePos = [x, y];
 }
 
-function createStars() {
-    for (const star of document.body.getElementsByClassName('star')) {
+function deleteStars() {
+    for (const star of stars) {
         document.body.removeChild(star);
     }
 
+    stars = [];
     starSpeeds = [];
+}
 
+function createStars() {
     for (let i = 0; i < (window.innerWidth * window.innerHeight) / 20000; i++) {
         const x = Math.floor(Math.random() * window.innerWidth);
         const y = Math.floor(Math.random() * window.innerHeight);
@@ -36,6 +40,7 @@ function createStars() {
         star.style.height = size + 'px';
 
         document.body.appendChild(star);
+        stars.push(star);
 
         const xSpeed = Math.round((-1 + Math.random() * 2) * 10) / 10;
         const ySpeed = Math.round((-1 + Math.random() * 2) * 10) / 10;
@@ -58,14 +63,17 @@ window.onmouseup = event => {
     repel = event.buttons === 2;
 }
 
-document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
+document.oncontextmenu = document.body.oncontextmenu = function() { return false; }
 
 createStars();
-window.onresize = () => createStars();
+window.addEventListener('resize', () => {
+    deleteStars();
+    createStars();
+})
 
 setInterval(() => {
     let index = 0;
-    for (const star of document.body.getElementsByClassName('star')) {
+    for (const star of stars) {
         let x = Number(star.style.left.slice(0, -2));
         let y = Number(star.style.top.slice(0, -2));
         x += starSpeeds[index][0];
@@ -86,7 +94,7 @@ setInterval(() => {
         star.style.left = x + 'px';
         star.style.top = y + 'px';
 
-        if (attract || repel) {
+        if (attract !== repel) {
             let distance = Math.abs(mousePos[0] - x) + Math.abs(mousePos[1] - y);
             let xAccel = Math.min(Math.max(mousePos[0] - x, -maxAcceleration), maxAcceleration) / distance;
             let yAccel = Math.min(Math.max(mousePos[1] - y, -maxAcceleration), maxAcceleration) / distance;

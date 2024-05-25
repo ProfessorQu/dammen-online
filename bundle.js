@@ -11,12 +11,17 @@ const resignButton = document.getElementById('resign');
 const offerDrawButton = document.getElementById('draw');
 
 const dammen = require('dammen');
+
 let board = new dammen.Dammen();
 let turn = dammen.Player.White;
 
-socket.on('receive-move', (newBoardArray, currentTurn, takeIndex) => {
+socket.on('receive-move', (newBoardArray, currentTurn, takeIndex, fromIndex, toIndex) => {
     board.board = newBoardArray;
     turn = currentTurn;
+
+    for (let index = 0; index < 50; index++) {
+        document.getElementById('cell-' + index).classList.remove('changed');
+    }
 
     if (takeIndex !== null && board.boardArray[takeIndex].player === board.turn && board.boardArray[takeIndex].player === turn) {
         selected = document.getElementById('cell-' + takeIndex);
@@ -27,6 +32,9 @@ socket.on('receive-move', (newBoardArray, currentTurn, takeIndex) => {
             document.getElementById('cell-' + move.to).classList.add('possible');
         }
     }
+
+    document.getElementById('cell-' + fromIndex).classList.add('changed');
+    document.getElementById('cell-' + toIndex).classList.add('changed');
 
     updateBoard();
 });
